@@ -1,108 +1,79 @@
 # CRUD_2_HNG
 
+Simple REST API for Managing People.
 
-API Documentation
+This is a simple REST API built using Express.js and MongoDB for CRUD (Create, Read, Update, Delete) operations on a "person" resource.
 
-This DOCUMENTATION.md file provides a reference for using the API, understanding the expected request and response formats, and highlights any limitations and assumptions. Users and developers can use this documentation to interact effectively with the API.
+PREREQUISITES
+GETTING STARTED 
 
+Prerequisites
+Before you begin, ensure you have met the following requirements:
 
-Request Format
-For all endpoints that accept JSON data (e.g., POST and PUT requests), the request format should be as follows:
+Node.js installed on your system.
+MongoDB installed and running.
+Your preferred API testing tool (e.g., Postman or Insomnia).
+
+Getting Started
+To get started with this API, follow these steps:
+
+Clone this repository to your local machine
+git clone <repository_url>
+cd <project_folder>
+Install project dependencies using npm install or yarn install.
+
+Create a .env file in the project root and add the following environment variables:
+
+PORT=4000  # or your preferred port number
+DB_URL=mongodb://localhost:27017/<your_database_name>
+
+Start the server.
+npm start
+# or
+yarn start
+
+API Endpoints
+Create a new person:
+POST /api/
+
+Request Body:
 {
   "name": "John Doe"
 }
 
-Response Format
-All API responses will follow this format:
-{
-  "status": true,
-  "data": {
-    "name": "John Doe",
-    "_id": "1234567890"  // Unique identifier
-  }
-  
-}
+Fetch details of a person: 
+GET /api/:id
 
-Endpoints
-1. Create a new person
-Endpoint: POST /api/
-Request Format:
-{
-  "name": "John Doe"
-}
-
-Expected Response:
-{
-  "status": true,
-  "data": {
-    "name": "John Doe",
-    "_id": "1234567890"
-  }
-}
-
-2. Fetch details of a person
-Endpoint: GET /api/:id
-Expected Response (if person found):
-{
-  "status": true,
-  "data": {
-    "name": "John Doe",
-    "_id": "1234567890"
-  }
-}
-Expected Response (if person not found):
-{
-  "status": false,
-  "error": "User not found"
-}
-
-3. Modify details of an existing person
-Endpoint: PATCH /api/:id
-Request Format:
+Update details of a person:
+PATCH /api/:id
+Request Body:
+json
+Copy code
 {
   "name": "Updated Name"
 }
-Expected Response (if person found):
-{
-  "status": true,
-  "data": {
-    "name": "Updated Name",
-    "_id": "1234567890"
-  }
-}
+Remove a person:
+DELETE /api/:id
 
-4. Remove a person
-Endpoint: DELETE /api/:id
-Expected Response (if person found and deleted):
-{
-  "status": true,
-  "message": "User deleted successfully"
-}
-Expected Response (if person not found):
-{
-  "status": false,
-  "error": "User not found"
-}
+Usage
+You can use your preferred API testing tool (e.g., Postman) to interact with the API. Below are some sample requests:
 
-Sample API Usage: 
+Create a new person:
+Send a POST request to http://localhost:4000/api/ or   https://hng-crud-api-vzyn.onrender.com/api/ with a JSON body containing the person's name.
 
-Create a new person
-curl -X POST -H "Content-Type: application/json" -d '{"name": "John Doe"}' http://localhost:4000/api/ or https://hng-crud-api-vzyn.onrender.com/api/
+Fetch details of a person:
+Send a GET request to http://localhost:4000/api/:id or https://hng-crud-api-vzyn.onrender.com/api/:id where :id is the ID of the person you want to retrieve.
 
-Fetch details of a person
-curl http://localhost:4000/api/1234567890 or https://hng-crud-api-vzyn.onrender.com/api/1234567990
+Modify details of an existing person:
+Send a PUT request to http://localhost:4000/api/:id or https://hng-crud-api-vzyn.onrender.com/api/:id
+with a JSON body containing the updated name.
+Remove a person:
 
-Modify details of an existing person
-curl -X PATCH -H "Content-Type: application/json" -d '{"name": "Updated Name"}' http://localhost:4000/api/1234567890 or 
-https://hng-crud-api-vzyn.onrender.com/api/1234567990
+Send a DELETE request to http://localhost:4000/api/:id or https://hng-crud-api-vzyn.onrender.com/api/:id where :id is the ID of the person you want to delete.
 
-Remove a person
-curl -X DELETE http://localhost:4000/api/1234567890
+Troubleshooting
+If you encounter any issues or errors, please check the following:
 
-Known Limitations and Assumptions
-•	This API assumes that the unique identifier for a person is their MongoDB-generated _id.
-•	It does not handle complex validation and authentication mechanisms for simplicity.
-•	Error handling is minimal and may not cover all possible scenarios.
-
-Local Setup and Deployment
-To set up and deploy the API locally or on a server, follow the instructions in the README.md file of this project.
+Ensure MongoDB is running and the connection string in the .env file is correct.
+Make sure Node.js is installed, and you have installed project dependencies.
+Check the API endpoints and request formats in the Usage section.
