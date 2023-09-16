@@ -18,8 +18,8 @@ Getting Started
 To get started with this API, follow these steps:
 
 Clone this repository to your local machine
-git clone <repository_url>
-cd <project_folder>
+git clone <https://github.com/Afomachinenye/CRUD_2_HNG/tree/master>
+cd <CRUD_2_HNG>
 Install project dependencies using npm install or yarn install.
 
 Create a .env file in the project root and add the following environment variables:
@@ -65,7 +65,7 @@ Fetch details of a person:
 Send a GET request to http://localhost:4000/api/:id or https://hng-crud-api-vzyn.onrender.com/api/:id where :id is the ID of the person you want to retrieve.
 
 Modify details of an existing person:
-Send a PUT request to http://localhost:4000/api/:id or https://hng-crud-api-vzyn.onrender.com/api/:id
+Send a PATCH request to http://localhost:4000/api/:id or https://hng-crud-api-vzyn.onrender.com/api/:id
 with a JSON body containing the updated name.
 Remove a person:
 
